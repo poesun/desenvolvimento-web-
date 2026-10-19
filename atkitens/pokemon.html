@@ -1,71 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Pokémon</title>
   <link rel="stylesheet" href="/resources/css/pokemon.css">
+  <link rel="stylesheet" href="/resources/css/types.css">
   <link rel="stylesheet" href="/resources/css/lateral.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-  <nav class="menu-lateral">
-
-    <div class="btn-expandir">
-        <i class="bi bi-list"></i>
-    </div>
-
-    <ul>
-      <li class="item-menu">
-          <a href="/index.html">
-              <span class="icon"><i class="bi bi-person-circle"></i></span>
-              <span class="txt-link">login</span>
-          </a>
-
-  </li>
-  <li class="item-menu">
-      <a href="/aaa.html">
-          <span class="icon"><i class="bi bi-record-circle-fill"></i></iconify-icon></i>
-        
-          <span class="txt-link">pokemon</span>
-      </a>
-
-
-    </li>
-    <li class="item-menu">
-        <a href="/atkItens/pokemon.html">
-            <span class="icon"><i class="bi bi-fire"></i></iconify-icon></i>
-            <span class="txt-link">habilidades</span>
-        </a>
-
-    </li>
-    <li class="item-menu">
-        <a href="/atkItens/itens.html">
-            <span class="icon"><i class="bi bi-disc"></i></span>
-            <span class="txt-link">itens</span>
-        </a>
-   
-    </ul>
-
-</nav>
-
   <div class="pokemon-details">
     <div class="imgContainer">
-      <img src="" alt="Imagem do Pokémon">
+      <img alt="Imagem do Pokémon">
     </div>
     <h2 class="name"></h2>
+
     <div class="stats">
-      <div class="stat">
-        <label>Altura:</label>
-        <span class="height"></span>
-      </div>
-      <div class="stat">
-        <label>Peso:</label>
-        <span class="weight"></span>
-      <div class="stat">
-        <label>Tipo:</label>
-        <span class="type"></span>
-      </div>
+      <div class="stat"><label>Altura:</label> <span class="height"></span></div>
+      <div class="stat"><label>Peso:</label> <span class="weight"></span></div>
+      <div class="stat"><label>Tipo:</label> <span class="type"></span></div>
       <div class="stat">
         <label>Stats:</label>
         <ul class="pokemon-stats"></ul>
@@ -74,179 +28,24 @@
         <label>Habilidades:</label>
         <ul class="abilities"></ul>
       </div>
-      <div class="button-container">
-        <button class="back-pokemon-button">Anterior Pokémon</button> 
-        <button class="next-pokemon-button">Próximo Pokémon</button>
-      </div>
-      <button class="back-button">Voltar</button>
     </div>
-      <div class="stat">
-        <label>Ataques:</label>
-        <ul class="moves"></ul>
-        <button class="see-more-button">Ver mais</button>
-        <button class="see-less-button">Ver menos</button>
-      </div>
-    
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        const getAbilityData = async (url) => {
-          const resp = await fetch(url);
-          const data = await resp.json();
-          return data;
-        };
-    
-        $(document).ready(function() {
-          const urlParams = new URLSearchParams(window.location.search);
-          let pokemonId = parseInt(urlParams.get("id"));
-    
-          const getPokemonData = async (id) => {
-            const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-            const resp = await fetch(url);
-            const data = await resp.json();
-            return data;
-          };
-    
-          const getMoveData = async (url) => {
-            const resp = await fetch(url);
-            const data = await resp.json();
-            return data;
-          };
-    
-          const MAX_MOVES_DISPLAYED = 5; // Número máximo de ataques exibidos inicialmente
-          let showingAllMoves = false; // Flag para controlar a exibição de todos os ataques
-          let pokemonMoves = []; // Array para armazenar os ataques do Pokémon
-    
-          const fillPokemonDetails = async (pokemon) => {
-            const pokemonName = pokemon.name;
-            const pokemonImage = pokemon.sprites.front_default;
-            const pokemonHeight = pokemon.height / 10;
-            const pokemonWeight = pokemon.weight / 10;
-            const pokemonAbilities = pokemon.abilities.map(async (ability) => {
-              const abilityData = await getAbilityData(ability.ability.url);
-              const abilityName = abilityData.names.find((name) => name.language.name === "en").name;
-              const abilityDescription = abilityData.effect_entries.find((entry) => entry.language.name === "en").effect;
-              return `${abilityName}: ${abilityDescription}`;
-            });
-    
-            pokemonMoves = [];
-            for (let level = 1; level <= 100; level++) {
-              const movesAtLevel = pokemon.moves.filter((move) => {
-                return move.version_group_details.some((detail) => {
-                  return detail.move_learn_method.name === "level-up" && detail.level_learned_at === level;
-                });
-              });
-    
-              for (const move of movesAtLevel) {
-                const moveData = await getMoveData(move.move.url);
-                const moveName = moveData.name;
-                const moveLevel = level;
-                const movePower = moveData.power || "-";
-                const movePP = moveData.pp || "-";
-                const moveDescription = moveData.effect_entries[0].effect.replace("$effect_chance", moveData.effect_chance);
-                const moveType = moveData.type.name;
-                const moveDetails = `${moveName} (Nível ${moveLevel}) <br> Tipo: ${moveType} <br> Power: ${movePower} <br> PP: ${movePP} <br> ${moveDescription}<br>  `;
-                pokemonMoves.push(moveDetails);
-              }
-            }
-    
-            const pokemonType = pokemon.types.map((type) => type.type.name).join(", ");
-    
-            const pokemonStats = pokemon.stats.map((stat) => {
-              const statName = stat.stat.name;
-              const statValue = stat.base_stat;
-              return `<li>${statName}: ${statValue}</li>`;
-            });
-    
-            $(".name").text(pokemonName);
-            $(".imgContainer img").attr("src", pokemonImage);
-            $(".height").text(pokemonHeight + " m");
-            $(".weight").text(pokemonWeight + " kg");
-            $(".type").text(pokemonType);
-            $(".abilities").empty();
-            for (let i = 0; i < pokemonAbilities.length; i++) {
-              const ability = await pokemonAbilities[i];
-              $(".abilities").append(`<li>${ability}</li><br>`);
-            }
-            $(".moves").empty();
-            if (showingAllMoves) {
-              for (let i = 0; i < pokemonMoves.length; i++) {
-                const move = pokemonMoves[i];
-                
-                $(".moves").append(`<li>${move}</li><br>`);
-              }
-            } else {
-              for (let i = 0; i < MAX_MOVES_DISPLAYED; i++) {
-                const move = pokemonMoves[i];
-                $(".moves").append(`<li>${move}</li><br>`);
-              }
-            }
-            $(".pokemon-stats").html(pokemonStats.join(""));
-          };
-          
-          $(".see-more-button").on("click", function() {
-            showingAllMoves = true;
-            $(".moves").empty();
-            for (let i = 0; i < pokemonMoves.length; i++) {
-              const move = pokemonMoves[i];
-              $(".moves").append(`<li>${move}</li><br>`);
-            }
-            $(".see-more-button").hide();
-            $(".see-less-button").show();
-          });
-    
-          $(".see-less-button").on("click", function() {
-            showingAllMoves = false;
-            $(".moves").empty();
-            for (let i = 0; i < MAX_MOVES_DISPLAYED; i++) {
-              const move = pokemonMoves[i];
-              $(".moves").append(`<li>${move}</li><br>`);
-            }
-            $(".see-more-button").show();
-            $(".see-less-button").hide();
-          });
-    
-          const loadNextPokemon = () => {
-            pokemonId += 1;
-            getPokemonData(pokemonId)
-              .then((pokemon) => {
-                fillPokemonDetails(pokemon);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          };
-    
-          const loadBackPokemon = () => {
-            pokemonId -= 1;
-            getPokemonData(pokemonId)
-              .then((pokemon) => {
-                fillPokemonDetails(pokemon);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          };
-    
-          getPokemonData(pokemonId)
-            .then((pokemon) => {
-              fillPokemonDetails(pokemon);
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-    
-          $(".next-pokemon-button").on("click", function() {
-            loadNextPokemon();
-          });
-    
-          document.querySelector('.back-button').addEventListener('click', function() {
-            window.history.back();
-          });
-    
-          $(".back-pokemon-button").on("click", function() {
-            loadBackPokemon();
-          });
-        });
-      </script>
-    </body>
-    </html>
+
+    <div class="button-container">
+      <button class="back-pokemon-button">Anterior Pokémon</button>
+      <button class="next-pokemon-button">Próximo Pokémon</button>
+    </div>
+
+    <div class="stat">
+      <label>Ataques:</label>
+      <ul class="moves"></ul>
+      <button class="see-more-button" hidden>Ver mais</button>
+      <button class="see-less-button" hidden>Ver menos</button>
+    </div>
+
+    <a class="back-button" href="/aaa.html">Voltar</a>
+  </div>
+
+  <script src="/resources/js/menu.js"></script>
+  <script src="/resources/js/pokemon-detalhes.js"></script>
+</body>
+</html>

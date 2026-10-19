@@ -1,31 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
-    
 }
 
-nav.menu-lateral
-{
+/* espaço para o menu fixo não cobrir o conteúdo */
+body {
+    padding-left: 90px;
+}
+
+nav.menu-lateral {
     width: 75px;
-    height:  100%;
+    height: 100%;
     background-color: rgb(62, 99, 180);
     padding: 40px 0 40px 1%;
     box-shadow: 3px 0 0 blue;
-
-    position:fixed;
+    position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
     transition: .2s;
+    z-index: 10;
 }
 
-nav.menu-lateral:hover{
-    width:200px;
+nav.menu-lateral:hover {
+    width: 200px;
 }
-.btn-expandir{
+
+.btn-expandir {
     width: 100%;
     padding-left: 5px;
 }
@@ -36,35 +41,37 @@ nav.menu-lateral:hover{
     cursor: pointer;
 }
 
-ul{
+/* escopado ao menu: antes afetava TODOS os <ul> do site */
+nav.menu-lateral ul {
     height: 100%;
     list-style-type: none;
 }
-ul li.item-menu{
+
+nav.menu-lateral ul li.item-menu {
     transition: .2s;
     margin-bottom: 10px;
     width: 175px;
 }
 
-ul li.item-menu:hover{
+nav.menu-lateral ul li.item-menu:hover {
     background: #e6bb00;
     margin-bottom: 20px;
     border-radius: 20px;
 }
-ul li.item-menu a{
+
+nav.menu-lateral ul li.item-menu a {
     color: white;
     text-decoration: none;
-    padding: 10px 4%; 
+    padding: 10px 4%;
     display: flex;
     margin-bottom: 20px;
     line-height: 40px;
 }
 
-ul li.item-menu a .txt-link{
+nav.menu-lateral ul li.item-menu a .txt-link {
     margin-left: 40px;
 }
 
-ul li.item-menu a .icon > i{
+nav.menu-lateral ul li.item-menu a .icon > i {
     font-size: 30px;
-
 }

@@ -1,318 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <title>Pokedex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Itens - Pokedex</title>
   <link rel="stylesheet" href="/resources/css/iten.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/resources/css/lateral.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-  <nav class="menu-lateral">
+  <h1>Lista de Itens</h1>
+  <ul id="item-list"><li>Carregando...</li></ul>
 
-    <div class="btn-expandir">
-        <i class="bi bi-list"></i>
-    </div>
-
-    <ul>
-      <li class="item-menu">
-          <a href="/index.html">
-              <span class="icon"><i class="bi bi-person-circle"></i></span>
-              <span class="txt-link">login</span>
-          </a>
-
-  </li>
-  <li class="item-menu">
-      <a href="/aaa.html">
-          <span class="icon"><i class="bi bi-record-circle-fill"></i></iconify-icon></i>
-        
-          <span class="txt-link">pokemon</span>
-      </a>
-
-    </li>
-    <li class="item-menu">
-        <a href="/atk itens/pokemon.html">
-            <span class="icon"><i class="bi bi-fire"></i></iconify-icon></i>
-            <span class="txt-link">habilidades</span>
-        </a>
-
-    </li>
-    <li class="item-menu">
-        <a href="/atk itens/itens.html">
-            <span class="icon"><i class="bi bi-disc"></i></span>
-            <span class="txt-link">itens</span>
-        </a>
-   
-    </ul>
-
-</nav>
-  <h1>Lista de Itens da 1ª Geração de Pokémon</h1>
-  <ul id="item-list"></ul>
+  <script src="/resources/js/menu.js"></script>
   <script>
-    const itemUrls = [
-      'https://pokeapi.co/api/v2/item/4',
-      'https://pokeapi.co/api/v2/item/3',
-      'https://pokeapi.co/api/v2/item/2',
-      'https://pokeapi.co/api/v2/item/1',
-      'https://pokeapi.co/api/v2/item/5',
-      'https://pokeapi.co/api/v2/item/6',
-      'https://pokeapi.co/api/v2/item/7',
-      'https://pokeapi.co/api/v2/item/8',
-      'https://pokeapi.co/api/v2/item/9',
-      'https://pokeapi.co/api/v2/item/10',
-      'https://pokeapi.co/api/v2/item/11',
-      'https://pokeapi.co/api/v2/item/12',
-      'https://pokeapi.co/api/v2/item/13',
-      'https://pokeapi.co/api/v2/item/14',
-      'https://pokeapi.co/api/v2/item/15',
-      'https://pokeapi.co/api/v2/item/16',
-      'https://pokeapi.co/api/v2/item/17',
-      'https://pokeapi.co/api/v2/item/26',
-      'https://pokeapi.co/api/v2/item/25',
-      'https://pokeapi.co/api/v2/item/18',
-      'https://pokeapi.co/api/v2/item/19',
-      'https://pokeapi.co/api/v2/item/20',
-      'https://pokeapi.co/api/v2/item/21',
-      'https://pokeapi.co/api/v2/item/22',
-      'https://pokeapi.co/api/v2/item/23',
-      'https://pokeapi.co/api/v2/item/24',
-      'https://pokeapi.co/api/v2/item/27',
-      'https://pokeapi.co/api/v2/item/28',
-      'https://pokeapi.co/api/v2/item/29',
-      'https://pokeapi.co/api/v2/item/30',
-      'https://pokeapi.co/api/v2/item/31',
-      'https://pokeapi.co/api/v2/item/32',
-      'https://pokeapi.co/api/v2/item/33',
-      'https://pokeapi.co/api/v2/item/34',
-      'https://pokeapi.co/api/v2/item/35',
-      'https://pokeapi.co/api/v2/item/36',
-      'https://pokeapi.co/api/v2/item/37',
-      'https://pokeapi.co/api/v2/item/38',
-      'https://pokeapi.co/api/v2/item/39',
-      'https://pokeapi.co/api/v2/item/40',
-      'https://pokeapi.co/api/v2/item/41',
-      'https://pokeapi.co/api/v2/item/42',
-      'https://pokeapi.co/api/v2/item/43',
-      'https://pokeapi.co/api/v2/item/44',
-      'https://pokeapi.co/api/v2/item/45',
-      'https://pokeapi.co/api/v2/item/46',
-      'https://pokeapi.co/api/v2/item/47',
-      'https://pokeapi.co/api/v2/item/48',
-      'https://pokeapi.co/api/v2/item/49',
-      'https://pokeapi.co/api/v2/item/50',
-      'https://pokeapi.co/api/v2/item/51',
-      'https://pokeapi.co/api/v2/item/52',
-      'https://pokeapi.co/api/v2/item/53',
-      'https://pokeapi.co/api/v2/item/54',
-      'https://pokeapi.co/api/v2/item/55',
-      'https://pokeapi.co/api/v2/item/56',
-      'https://pokeapi.co/api/v2/item/57',
-      'https://pokeapi.co/api/v2/item/58',
-      'https://pokeapi.co/api/v2/item/59',
-      'https://pokeapi.co/api/v2/item/60',
-      'https://pokeapi.co/api/v2/item/61',
-      'https://pokeapi.co/api/v2/item/62',
-      'https://pokeapi.co/api/v2/item/63',
-      'https://pokeapi.co/api/v2/item/64',
-      'https://pokeapi.co/api/v2/item/65',
-      'https://pokeapi.co/api/v2/item/66',
-      'https://pokeapi.co/api/v2/item/67',
-      'https://pokeapi.co/api/v2/item/68',
-      'https://pokeapi.co/api/v2/item/69',
-      'https://pokeapi.co/api/v2/item/70',
-      'https://pokeapi.co/api/v2/item/71',
-      'https://pokeapi.co/api/v2/item/72',
-      'https://pokeapi.co/api/v2/item/73',
-      'https://pokeapi.co/api/v2/item/74',
-      'https://pokeapi.co/api/v2/item/75',
-      'https://pokeapi.co/api/v2/item/76',
-      'https://pokeapi.co/api/v2/item/77',
-      'https://pokeapi.co/api/v2/item/78',
-      'https://pokeapi.co/api/v2/item/79',
-      'https://pokeapi.co/api/v2/item/80',
-      'https://pokeapi.co/api/v2/item/81',
-      'https://pokeapi.co/api/v2/item/82',
-      'https://pokeapi.co/api/v2/item/83',
-      'https://pokeapi.co/api/v2/item/84',
-      'https://pokeapi.co/api/v2/item/85',
-      'https://pokeapi.co/api/v2/item/86',
-      'https://pokeapi.co/api/v2/item/87',
-      'https://pokeapi.co/api/v2/item/88',
-      'https://pokeapi.co/api/v2/item/89',
-      'https://pokeapi.co/api/v2/item/90',
-      'https://pokeapi.co/api/v2/item/91',
-      'https://pokeapi.co/api/v2/item/92',
-      'https://pokeapi.co/api/v2/item/93',
-      'https://pokeapi.co/api/v2/item/94',
-      'https://pokeapi.co/api/v2/item/95',
-      'https://pokeapi.co/api/v2/item/96',
-      'https://pokeapi.co/api/v2/item/97',
-      'https://pokeapi.co/api/v2/item/98',
-      'https://pokeapi.co/api/v2/item/99',
-      'https://pokeapi.co/api/v2/item/100',
-      'https://pokeapi.co/api/v2/item/101',
-      'https://pokeapi.co/api/v2/item/102',
-      'https://pokeapi.co/api/v2/item/103',
-      'https://pokeapi.co/api/v2/item/104',
-      'https://pokeapi.co/api/v2/item/105',
-      'https://pokeapi.co/api/v2/item/106',
-      'https://pokeapi.co/api/v2/item/107',
-      'https://pokeapi.co/api/v2/item/108',
-      'https://pokeapi.co/api/v2/item/109',
-      'https://pokeapi.co/api/v2/item/110',
-      'https://pokeapi.co/api/v2/item/111',
-      'https://pokeapi.co/api/v2/item/112',
-      'https://pokeapi.co/api/v2/item/113',
-      'https://pokeapi.co/api/v2/item/114',
-      'https://pokeapi.co/api/v2/item/115',
-      'https://pokeapi.co/api/v2/item/116',
-      'https://pokeapi.co/api/v2/item/117',
-      'https://pokeapi.co/api/v2/item/118',
-      'https://pokeapi.co/api/v2/item/118',
-      'https://pokeapi.co/api/v2/item/119',
-      'https://pokeapi.co/api/v2/item/120',
-      'https://pokeapi.co/api/v2/item/121',
-      'https://pokeapi.co/api/v2/item/122',
-      'https://pokeapi.co/api/v2/item/123',
-      'https://pokeapi.co/api/v2/item/124',
-      'https://pokeapi.co/api/v2/item/125',
-      'https://pokeapi.co/api/v2/item/126',
-      'https://pokeapi.co/api/v2/item/127',
-      'https://pokeapi.co/api/v2/item/128',
-      'https://pokeapi.co/api/v2/item/129',
-      'https://pokeapi.co/api/v2/item/130',
-      'https://pokeapi.co/api/v2/item/131',
-      'https://pokeapi.co/api/v2/item/132',
-      'https://pokeapi.co/api/v2/item/133',
-      'https://pokeapi.co/api/v2/item/134',
-      'https://pokeapi.co/api/v2/item/135',
-      'https://pokeapi.co/api/v2/item/136',
-      'https://pokeapi.co/api/v2/item/137',
-      'https://pokeapi.co/api/v2/item/138',
-      'https://pokeapi.co/api/v2/item/139',
-      'https://pokeapi.co/api/v2/item/140',
-      'https://pokeapi.co/api/v2/item/141',
-      'https://pokeapi.co/api/v2/item/142',
-      'https://pokeapi.co/api/v2/item/143',
-      'https://pokeapi.co/api/v2/item/144',
-      'https://pokeapi.co/api/v2/item/145',
-      'https://pokeapi.co/api/v2/item/146',
-      'https://pokeapi.co/api/v2/item/147',
-      'https://pokeapi.co/api/v2/item/148',
-      'https://pokeapi.co/api/v2/item/149',
-      'https://pokeapi.co/api/v2/item/150',
-      'https://pokeapi.co/api/v2/item/151',
-      "https://pokeapi.co/api/v2/item/152",
-      "https://pokeapi.co/api/v2/item/153",
-      "https://pokeapi.co/api/v2/item/154",
-      "https://pokeapi.co/api/v2/item/155",
-      "https://pokeapi.co/api/v2/item/156",
-      "https://pokeapi.co/api/v2/item/157",
-      "https://pokeapi.co/api/v2/item/158",
-      "https://pokeapi.co/api/v2/item/159",
-      "https://pokeapi.co/api/v2/item/160",
-      "https://pokeapi.co/api/v2/item/161",
-      "https://pokeapi.co/api/v2/item/162",
-      "https://pokeapi.co/api/v2/item/163",
-      "https://pokeapi.co/api/v2/item/164",
-      "https://pokeapi.co/api/v2/item/165",
-      "https://pokeapi.co/api/v2/item/166",
-      "https://pokeapi.co/api/v2/item/167",
-      "https://pokeapi.co/api/v2/item/168",
-      "https://pokeapi.co/api/v2/item/169",
-      "https://pokeapi.co/api/v2/item/170",
-      "https://pokeapi.co/api/v2/item/171",
-      "https://pokeapi.co/api/v2/item/172",
-      "https://pokeapi.co/api/v2/item/173",
-      "https://pokeapi.co/api/v2/item/174",
-      "https://pokeapi.co/api/v2/item/175",
-      "https://pokeapi.co/api/v2/item/176",
-      "https://pokeapi.co/api/v2/item/177",
-      "https://pokeapi.co/api/v2/item/178",
-      "https://pokeapi.co/api/v2/item/179",
-      "https://pokeapi.co/api/v2/item/180",
-      "https://pokeapi.co/api/v2/item/181",
-      "https://pokeapi.co/api/v2/item/182",
-      "https://pokeapi.co/api/v2/item/183",
-      "https://pokeapi.co/api/v2/item/184",
-      "https://pokeapi.co/api/v2/item/185",
-      "https://pokeapi.co/api/v2/item/186",
-      "https://pokeapi.co/api/v2/item/187",
-      "https://pokeapi.co/api/v2/item/188",
-      "https://pokeapi.co/api/v2/item/189",
-      "https://pokeapi.co/api/v2/item/190",
-      "https://pokeapi.co/api/v2/item/191",
-      "https://pokeapi.co/api/v2/item/192",
-      "https://pokeapi.co/api/v2/item/193",
-      "https://pokeapi.co/api/v2/item/194",
-      "https://pokeapi.co/api/v2/item/195",
-      "https://pokeapi.co/api/v2/item/196",
-      "https://pokeapi.co/api/v2/item/197",
-      "https://pokeapi.co/api/v2/item/198",
-      "https://pokeapi.co/api/v2/item/199",
-      "https://pokeapi.co/api/v2/item/200",
-      "https://pokeapi.co/api/v2/item/201",
-      "https://pokeapi.co/api/v2/item/202",
-      "https://pokeapi.co/api/v2/item/203",
-      "https://pokeapi.co/api/v2/item/204",
-      "https://pokeapi.co/api/v2/item/205",
-      "https://pokeapi.co/api/v2/item/206",
-      "https://pokeapi.co/api/v2/item/207",
-      "https://pokeapi.co/api/v2/item/208",
-      "https://pokeapi.co/api/v2/item/209",
-      "https://pokeapi.co/api/v2/item/210",
-      "https://pokeapi.co/api/v2/item/211",
-      "https://pokeapi.co/api/v2/item/212",
-      "https://pokeapi.co/api/v2/item/213",
-      "https://pokeapi.co/api/v2/item/214",
-      "https://pokeapi.co/api/v2/item/215",
-      "https://pokeapi.co/api/v2/item/216",
-      "https://pokeapi.co/api/v2/item/217",
-      "https://pokeapi.co/api/v2/item/218",
-      "https://pokeapi.co/api/v2/item/219",
-      "https://pokeapi.co/api/v2/item/220",
-      "https://pokeapi.co/api/v2/item/221",
-      "https://pokeapi.co/api/v2/item/222",
-      "https://pokeapi.co/api/v2/item/223",
-      "https://pokeapi.co/api/v2/item/224",
-      "https://pokeapi.co/api/v2/item/225",
-      "https://pokeapi.co/api/v2/item/226",
-      "https://pokeapi.co/api/v2/item/227",
-      "https://pokeapi.co/api/v2/item/228",
-      "https://pokeapi.co/api/v2/item/229",
-      "https://pokeapi.co/api/v2/item/230",
-      "https://pokeapi.co/api/v2/item/231",
-      "https://pokeapi.co/api/v2/item/232",
-      "https://pokeapi.co/api/v2/item/233",
-      "https://pokeapi.co/api/v2/item/234",
-      "https://pokeapi.co/api/v2/item/235",
-      "https://pokeapi.co/api/v2/item/236",
-      "https://pokeapi.co/api/v2/item/237",
-      "https://pokeapi.co/api/v2/item/238",
-      "https://pokeapi.co/api/v2/item/239",
-      "https://pokeapi.co/api/v2/item/240",
-    ];
+    const FIRST_ITEM = 1;
+    const LAST_ITEM = 240;   
 
-    const itemList = document.getElementById('item-list');
+    const english = (list, key) => list?.find(e => e.language.name === 'en')?.[key];
 
-    itemUrls.forEach(url => {
-      fetch(url)
-        .then(response => response.json())
-        .then(itemData => {
-          const listItem = document.createElement('li');
-          const itemImage = document.createElement('img');
-          itemImage.src = itemData.sprites.default;
-          const itemName = document.createElement('h3');
-          itemName.textContent = itemData.name;
-          const itemDescription = document.createElement('p');
-          itemDescription.textContent = itemData.effect_entries[0].effect;
+    async function getItem(id) {
+      const resp = await fetch(`https://pokeapi.co/api/v2/item/${id}`);
+      if (!resp.ok) throw new Error(`Item ${id}: HTTP ${resp.status}`);
+      return resp.json();
+    }
 
-          listItem.appendChild(itemImage);
-          listItem.appendChild(itemName);
-          listItem.appendChild(itemDescription);
-          itemList.appendChild(listItem);
-        });
-    });
+    async function loadItems() {
+      const ids = Array.from({ length: LAST_ITEM - FIRST_ITEM + 1 }, (_, i) => FIRST_ITEM + i);
+      
+      const results = await Promise.allSettled(ids.map(getItem));
+      const list = document.getElementById('item-list');
+      list.innerHTML = '';
+
+      for (const r of results) {
+        if (r.status !== 'fulfilled') { console.warn(r.reason); continue; }
+        const item = r.value;
+        const li = document.createElement('li');
+
+        if (item.sprites?.default) {            
+          const img = document.createElement('img');
+          img.src = item.sprites.default;
+          img.alt = item.name;
+          li.appendChild(img);
+        }
+        const h3 = document.createElement('h3');
+        h3.textContent = item.name.replaceAll('-', ' ');
+        const p = document.createElement('p');
+        p.textContent =
+          english(item.effect_entries, 'effect') ||                
+          english(item.flavor_text_entries, 'text') ||
+          'Sem descrição.';
+        li.append(h3, p);
+        list.appendChild(li);
+      }
+    }
+    loadItems();
   </script>
 </body>
 </html>

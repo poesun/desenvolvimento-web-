@@ -1,0 +1,29 @@
+/* Cores dos tipos em um único lugar (substitui os blocos repetidos de pokemon.css, atk.css e descri.css) */
+.type-badge {
+  display: inline-block;
+  background-color: var(--type-color, #999);
+  font-weight: bold;
+  border-radius: 7px;
+  box-shadow: 0 3px 15px rgba(240, 72, 72, 0.5);
+  margin: 5px;
+  padding: 2px 8px;
+  text-align: center;
+}
+.type-normal   { --type-color: #A8A878; }
+.type-fire     { --type-color: #F08030; }
+.type-water    { --type-color: #6890F0; }
+.type-electric { --type-color: #F8D030; }
+.type-grass    { --type-color: #78C850; }
+.type-ice      { --type-color: #98D8D8; }
+.type-fighting { --type-color: #C03028; }
+.type-poison   { --type-color: #A040A0; }
+.type-ground   { --type-color: #E0C068; }
+.type-flying   { --type-color: #A890F0; }
+.type-psychic  { --type-color: #F85888; }
+.type-bug      { --type-color: #A8B820; }
+.type-rock     { --type-color: #B8A038; }
+.type-ghost    { --type-color: #705898; }
+.type-dragon   { --type-color: #7038F8; }
+.type-dark     { --type-color: #705848; }
+.type-steel    { --type-color: #B8B8D0; }
+.type-fairy    { --type-color: #EE99AC; }

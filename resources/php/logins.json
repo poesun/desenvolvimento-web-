@@ -1,1 +1,17 @@
-[{"name":"admin","email":"admin@admin.com","senha":"admin"},{"name":"guilherme","email":"guilherme@guilherme","senha":"123"}]
+[
+    {
+        "name": "admin",
+        "email": "admin@admin.com",
+        "senha": "$2y$12$oZCHqS0wLSVYUqZN4UpiWeQLUU\/DBis6PRTQKud66C53E0hQf.SIa"
+    },
+    {
+        "name": "guilherme",
+        "email": "guilherme@guilherme",
+        "senha": "123"
+    },
+    {
+        "name": "bruno",
+        "email": "bruno@gmail.com",
+        "senha": "$2y$12$tTBjvl6nfTmXyLGwNBeZOeLQv1uJP1h.vppw844hOt9MUaoWcZAlC"
+    }
+]

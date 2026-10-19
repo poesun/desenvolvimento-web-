@@ -2,35 +2,33 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/login.css">
     <title>Login pokedex</title>
 </head>
-<body> 
+<body>
     <div class="main-login">
         <div class="left-login">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pokémon_logo.svg/1200px-International_Pokémon_logo.svg.png" class="left-login-img" alt="boneco">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" class="left-login-img" alt="Logo Pokémon">
             <h1>Faça login e tenha acesso a pokedex</h1>
         </div>
         <div class="right-login">
             <div class="card-login">
                 <h1>Login</h1>
-                <form method="post" action="..\resources\php\login.php">
+                <form method="post" action="/resources/php/login.php">
                     <div class="textfield">
                         <label for="email">Email</label>
-                        <input type="email" name="email" placeholder="Email" required>
-                    </div>  
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
                     <div class="textfield">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha" required>
-                    </div> 
+                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                    </div>
                     <button type="submit" class="btn-login" name="submit">Login</button>
                 </form>
-                <a class="btn-login btn-logon" href="cadastro.html">Não tem conta?</a>
+                <a class="btn-login btn-logon" href="/cadastro.html">Não tem conta?</a>
             </div>
         </div>
-    </div>   
-
+    </div>
 </body>
 </html>

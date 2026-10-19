@@ -1,0 +1,4 @@
+# Impede baixar logins.json pelo navegador (funciona no Apache)
+<Files "logins.json">
+    Require all denied
+</Files>

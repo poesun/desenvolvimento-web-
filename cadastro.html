@@ -1,76 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/login.css">
     <title>Página de Cadastro</title>
 </head>
-<body>    
-    <!--?php
-    // Verifica se o formulário foi enviado
-    if(isset($_POST['submit'])){
-        // Coleta os dados do formulário
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        
-        // Validar e processar os dados (exemplo simples, sem validações completas)
-        // ...
-        
-        // Exemplo de exibição dos dados após o processamento
-        echo "<p>Nome: $nome</p>";
-        echo "<p>Email: $email</p>";
-        echo "<p>Senha: $senha</p>";
-        
-        // Você pode salvar os dados em um banco de dados ou fazer qualquer outra ação necessária
-        
-        // Limpa os dados do formulário
-        $nome = '';
-        $email = '';
-        $senha = '';
-    }
-    ?>
-
-    <form method="POST" action="">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required><br><br>
-
-        <input type="submit" name="submit" value="Cadastrar">
-    </form> -->
-
+<body>
     <div class="main-login">
         <div class="left-login">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pokémon_logo.svg/1200px-International_Pokémon_logo.svg.png" class="left-login-img" alt="boneco">
-            <h1>Faça login e tenha acesso a pokedex</h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" class="left-login-img" alt="Logo Pokémon">
+            <h1>Crie sua conta e tenha acesso a pokedex</h1>
         </div>
         <div class="right-login">
             <div class="card-login">
                 <h1>Cadastro</h1>
-                <form method="post" action="..\resources\php\signIn.php">
+                <form method="post" action="/resources/php/signIn.php">
                     <div class="textfield">
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" name="nome" placeholder="Nome" required>
-                    </div>  
+                    </div>
                     <div class="textfield">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email" required>
-                    </div>  
+                    </div>
                     <div class="textfield">
                         <label for="senha">Senha</label>
-                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
-                    </div> 
-                    <button type="submit" class="btn-login" name="submit">Sign in</button>
-                </form> 
+                        <input type="password" id="senha" name="senha" placeholder="Senha" minlength="3" required>
+                    </div>
+                    <button type="submit" class="btn-login" name="submit">Cadastrar</button>
+                </form>
+                <a class="btn-login btn-logon" href="/index.html">Já tem conta?</a>
             </div>
         </div>
-    </div>  
+    </div>
 </body>
 </html>
